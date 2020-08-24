@@ -22,8 +22,6 @@ function App() {
     setCounter(prev=>prev+1)
   }
   const restore = async ()=>{
-    // const list = await axios.get("/api/tickets")
-    // setTickets(list.data)
     setCall(prev=>prev+1)
     setCounter(0)
   }
@@ -31,7 +29,7 @@ function App() {
     if (counter===0){
       return ""
     }else{
-    return <span className="counterHidden">({counter} hidden tickets -<button onClick={restore} className="restoreHideTickets">restore</button>)</span>
+    return <span className="counterHidden">(<span id="hideTicketsCounter" className="hideTicketsCounter">{counter}</span> hidden tickets -<button onClick={restore} id="restoreHideTickets">restore</button>)</span>
     }
   }
   return (

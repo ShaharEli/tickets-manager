@@ -64,6 +64,7 @@
     background-color: transparent;
     outline:none;
     cursor: pointer;
+    color:red
 }
 .titleAndButton{
     display: flex;

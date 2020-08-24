@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import "./Ticket.css"
-import Button from "@material-ui/core/Button"
 function Ticket(props) {
     const [contentClass,setContentClass] = useState("content")
     const [display,setDisplay] = useState("flex")
+    const [buttonDisplay,setButtonDisplay] = useState("none")
+    const [classTicket, setClassTicket]=useState("ticket")
     //function to add zeros to the date if needed
 function addZero(i) {
     if (i < 10) {
@@ -36,18 +37,28 @@ function addZero(i) {
       }
   }
   const hide = ()=>{
+    setClassTicket("hiddenTicket")
     props.addCount()
     setDisplay("none")
   }
-  useEffect(()=>setDisplay("flex"),[props.call])
+  const showButton = ()=>{
+    setButtonDisplay("block")
+  }
+  const hideButton = ()=>{
+    setButtonDisplay("none")
+  }
+  useEffect(()=>{
+  setDisplay("flex")
+  setClassTicket("ticket")
+  },[props.call])
     return (
-        <div style={{display}} className="ticket">
+        <div style={{display}} className={classTicket} onMouseOver={showButton} onMouseOut={hideButton}>
             <div className="titleAndButton">
             <div>
             <p className="title">{props.title}</p>
             </div>
             <div>
-            <button onClick={e=>hide(e)} className="hideTicketButton">hide</button>
+            <button style={{display:buttonDisplay}} onClick={e=>hide(e)} className="hideTicketButton">hide</button>
             </div>
             </div>
             <p className={contentClass}>{props.content}</p>
