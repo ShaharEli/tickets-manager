@@ -65,10 +65,11 @@ function Ticket(props) {
       <div className="contact">
         <div>
           <p className="email">
-            By
-            {props.userEmail}
-            {' '}
+            By&nbsp;
+            <a href={`mailto:${props.userEmail}`}>{props.userEmail}</a>
+            &nbsp;
             |
+            &nbsp;
             { myFunction() }
           </p>
         </div>

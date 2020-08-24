@@ -48,7 +48,7 @@ function App() {
       <span className="counterHidden">
         (
         <span id="hideTicketsCounter" className="hideTicketsCounter">{counter}</span>
-        {' '}
+        &nbsp;
         hidden tickets -
         <button onClick={restore} id="restoreHideTickets">restore</button>
         )
@@ -65,9 +65,9 @@ function App() {
       </div>
       <div id="list">
         <h2>
-          Showing
-          {tickets.length}
-          {' '}
+          Showing&nbsp;
+          {tickets.length+" "}
+          
           results
           {hiddenItems()}
         </h2>
