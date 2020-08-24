@@ -1,0 +1,8 @@
+header{
+    position: fixed;
+    background-color: rgba(65, 124, 219, 0.3);
+    width:100vw;
+    z-index: 100;
+    text-align: center;
+   
+}

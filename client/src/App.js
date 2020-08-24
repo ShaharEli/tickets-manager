@@ -3,6 +3,7 @@ import axios from "axios"
 import Ticket from "./components/Ticket";
 import './App.css';
 import Search from "./components/Search"
+import Header from "./components/Header"
 function App() {
   const [counter,setCounter] = useState(0)
   const [tickets,setTickets] = useState([])
@@ -48,7 +49,7 @@ function App() {
   return (
     <main id="main">
       <button id="scrollBtn" onClick={scrollUp} style={{display:scrollDisplay}}> go back up</button>
-      <h1>Cards manager</h1>
+      <Header/>
       <div>
         <Search search={search}/>
       </div>
