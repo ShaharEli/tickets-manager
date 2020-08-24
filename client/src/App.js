@@ -7,7 +7,19 @@ function App() {
   const [counter,setCounter] = useState(0)
   const [tickets,setTickets] = useState([])
   const [call,setCall] = useState(0)
-
+  const [scrollDisplay,setScrollDisplay] = useState("none")
+  const scrollFunction = ()=>{
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      setScrollDisplay("block");
+    } else {
+      setScrollDisplay("none");
+    }
+  }
+  window.onscroll = scrollFunction;
+  const scrollUp = ()=>{
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   useEffect( ()=>{ const fetch = async ()=>{
     const list = await axios.get("/api/tickets")
     setTickets(list.data)
@@ -32,8 +44,10 @@ function App() {
     return <span className="counterHidden">(<span id="hideTicketsCounter" className="hideTicketsCounter">{counter}</span> hidden tickets -<button onClick={restore} id="restoreHideTickets">restore</button>)</span>
     }
   }
+ 
   return (
     <main id="main">
+      <button id="scrollBtn" onClick={scrollUp} style={{display:scrollDisplay}}> go back up</button>
       <h1>Cards manager</h1>
       <div>
         <Search search={search}/>

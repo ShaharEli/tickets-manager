@@ -12,6 +12,9 @@
     background-color: #dcf2f1;
     box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
+.ticket:hover{
+    padding:12px
+}
 .title{
     color: #275fba;
     font-size: 20px;
@@ -71,3 +74,4 @@
     align-items: center ;
     justify-content: space-between;
 }
+
