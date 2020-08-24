@@ -1,0 +1,27 @@
+{
+  "name": "final-1-5-ticket-manager-master",
+  "version": "1.0.0",
+  "description": "This project will include most of the topics we have learnt so far. This repository includes a basic skeleton with automated tests, use it for you submissions. In this project you will create a Ticket Manager Web Application, with React.js and Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShaharEli/ticket-manager-master.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShaharEli/ticket-manager-master/issues"
+  },
+  "homepage": "https://github.com/ShaharEli/ticket-manager-master#readme",
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
