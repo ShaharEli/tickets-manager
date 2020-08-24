@@ -29,6 +29,7 @@ function addZero(i) {
       }else{
         setContentClass("content")
         e.target.innerText="show more..."
+
         
       }
   }
@@ -36,12 +37,14 @@ function addZero(i) {
         <div className="ticket">
             <p className="title">{props.title}</p>
             <p className={contentClass}>{props.content}</p>
-            <span onClick={e=>see(e)} className="see">show more..</span>
+            <span onClick={e=>see(e)} className="see">show more...</span>
             <div className="contact">
+            <div>
             <p className="email">By {props.userEmail} | { myFunction() }</p>
-            <div className="lables">
+            </div>
+            <div className="labels">
                 {
-                    props.labels!==null&&props.labels.map((label,index)=><div key={index}>{label}</div>)
+                    props.labels!==null&&props.labels.map((label,index)=><div className="label" key={index}>{label}</div>)
                 }
             </div>
             </div>
