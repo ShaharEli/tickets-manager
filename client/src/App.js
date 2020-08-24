@@ -30,7 +30,7 @@ function App() {
         title={ticket.title}
         content={ticket.content}
         userEmail={ticket.userEmail}
-        creationTime={ticket.creationTime}
+        creationTime={new Date(ticket.creationTime)}
         labels={ticket.labels?ticket.labels:null}  />
       })
       }
