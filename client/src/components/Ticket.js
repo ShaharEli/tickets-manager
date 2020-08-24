@@ -61,7 +61,7 @@ function Ticket(props) {
         </div>
       </div>
       <p className={contentClass}>{props.content}</p>
-      <span onClick={(e) => see(e)} className="see">show more...</span>
+      <span style={{display:props.content.length<300?"none":"inline"}} onClick={(e) => see(e)} className="see">show more...</span>
       <div className="contact">
         <div>
           <p className="email">
