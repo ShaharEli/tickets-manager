@@ -7,7 +7,7 @@ function Search(props) {
     }
     return (
         <>
-        <TextField variant="outlined" id="input"  autoComplete="off" label="Search ticket" onChange={(e)=>handleChange(e)}/>
+        <TextField style={{marginTop:30}} variant="outlined" id="searchInput"  autoComplete="off" label="Search ticket" onChange={(e)=>handleChange(e)}/>
         </>
     )
 }

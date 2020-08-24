@@ -1,0 +1,15 @@
+.ticket{
+    display: flex;
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 7px;
+    margin-bottom: 20px;
+    width: 60%;
+    flex-direction: column;
+    align-content: center;
+    overflow-wrap: break-word
+}
+.title{
+    color: blue;
+}
