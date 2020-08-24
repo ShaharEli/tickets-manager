@@ -57,3 +57,16 @@
     background-color: cornflowerblue;
     border-radius: 8px;
 }
+
+.hideTicketButton{
+    border:none;
+    font-size: 16px;
+    background-color: transparent;
+    outline:none;
+    cursor: pointer;
+}
+.titleAndButton{
+    display: flex;
+    align-items: center ;
+    justify-content: space-between;
+}

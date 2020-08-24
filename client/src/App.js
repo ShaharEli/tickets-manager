@@ -4,7 +4,10 @@ import Ticket from "./components/Ticket";
 import './App.css';
 import Search from "./components/Search"
 function App() {
+  const [counter,setCounter] = useState(0)
   const [tickets,setTickets] = useState([])
+  const [call,setCall] = useState(0)
+
   useEffect( ()=>{ const fetch = async ()=>{
     const list = await axios.get("/api/tickets")
     setTickets(list.data)
@@ -15,6 +18,22 @@ function App() {
     const data = await axios.get(`/api/tickets?searchText=${title}`)
     setTickets(data.data)
   }
+  const addCount = ()=>{
+    setCounter(prev=>prev+1)
+  }
+  const restore = async ()=>{
+    // const list = await axios.get("/api/tickets")
+    // setTickets(list.data)
+    setCall(prev=>prev+1)
+    setCounter(0)
+  }
+  const hiddenItems = ()=>{
+    if (counter===0){
+      return ""
+    }else{
+    return <span className="counterHidden">({counter} hidden tickets -<button onClick={restore} className="restoreHideTickets">restore</button>)</span>
+    }
+  }
   return (
     <main id="main">
       <h1>Cards manager</h1>
@@ -22,10 +41,12 @@ function App() {
         <Search search={search}/>
       </div>
       <div id="list">
-      <h2>Showing {tickets.length} results</h2>
+        <h2>Showing {tickets.length} results {hiddenItems()}</h2>
       {
         tickets.map((ticket,index)=>{
         return <Ticket
+        addCount={addCount}
+        call={call}
         key={index}
         id={ticket.id} 
         title={ticket.title}
