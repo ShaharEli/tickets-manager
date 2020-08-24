@@ -17,6 +17,7 @@ function App() {
   }
   return (
     <main id="main">
+      <h1>Cards manager</h1>
       <div>
         <Search search={search}/>
       </div>

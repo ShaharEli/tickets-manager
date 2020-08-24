@@ -18,15 +18,16 @@ function addZero(i) {
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); 
     let yyyy = today.getFullYear();
-    today = mm + '-' + dd + '-' + yyyy;
+    today = mm + '/' + dd + '/' + yyyy;
     return today+"  "+h + ":" + m + ":"+s ;
   }
     return (
         <div className="ticket">
             <p className="title">{props.title}</p>
-            <p className="contnet">{props.content}</p>
-            <p className="contnet">By {props.userEmail} | { myFunction() }</p>
-    
+            <p className="content">{props.content}</p>
+            <div>
+            <p className="conatact">By {props.userEmail} | { myFunction() }</p>
+            </div>
         </div>
     )
 }
