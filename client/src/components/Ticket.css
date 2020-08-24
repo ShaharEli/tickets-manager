@@ -5,7 +5,7 @@
     border-radius: 6px;
     padding: 7px;
     margin-bottom: 20px;
-    width: 60%;
+    width: 60vw;
     flex-direction: column;
     align-content: center;
     overflow-wrap: break-word;
@@ -19,4 +19,28 @@
 .content{
     font-size: 16px;
     color: grey;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+.content2{
+    font-size: 16px;
+    color: grey;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1000; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+.contact{
+    color: grey;
+    font-size: 14px;
+}
+.see{
+    color:blue;
+    text-align:right;
+    margin-right:9px;
+    cursor:pointer;
 }

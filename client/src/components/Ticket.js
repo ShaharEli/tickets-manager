@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Ticket.css"
 function Ticket(props) {
+    const [contentClass,setContentClass] = useState("content")
     //function to add zeros to the date if needed
 function addZero(i) {
     if (i < 10) {
@@ -21,12 +22,28 @@ function addZero(i) {
     today = mm + '/' + dd + '/' + yyyy;
     return today+"  "+h + ":" + m + ":"+s ;
   }
+  const see =(e)=>{
+      if(contentClass==="content"){
+        setContentClass("content2")
+        e.target.innerText="show less"
+      }else{
+        setContentClass("content")
+        e.target.innerText="show more..."
+        
+      }
+  }
     return (
         <div className="ticket">
             <p className="title">{props.title}</p>
-            <p className="content">{props.content}</p>
-            <div>
-            <p className="conatact">By {props.userEmail} | { myFunction() }</p>
+            <p className={contentClass}>{props.content}</p>
+            <span onClick={e=>see(e)} className="see">show more..</span>
+            <div className="contact">
+            <p className="email">By {props.userEmail} | { myFunction() }</p>
+            <div className="lables">
+                {
+                    props.labels!==null&&props.labels.map((label,index)=><div key={index}>{label}</div>)
+                }
+            </div>
             </div>
         </div>
     )
