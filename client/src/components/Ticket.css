@@ -78,3 +78,25 @@
 a{
     text-decoration: none;
 }
+
+@media screen and (max-width: 725px){
+    
+    .ticket{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .label{
+        width:20px;
+        height: 20px;
+        font-size: 3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .contact{
+        font-size:10px
+    }
+    
+}
