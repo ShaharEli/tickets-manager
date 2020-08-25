@@ -1,3 +1,29 @@
+## bonuses
+1. Flip animation to the tickets added.
+2. Scroll up button added.
+3. Test for the scroll up button added.
+4. Backend test fixed.
+5. Read more / read less to added.
+6. The application is responsive and have compatibility to smaller screens.
+7. Direct link to send mail added to the tickets.
+
+
+# ![test-gif](./client/ui-testing-recording.gif)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ![Scale-Up Velocity](./readme-files/logo-main.png)   Final 1/5 - Tickets Manager
 This project will include most of the topics we have learnt so far.
 This repository includes a basic skeleton with automated tests, use it for you submissions.
