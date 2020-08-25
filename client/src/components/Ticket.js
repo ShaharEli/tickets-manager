@@ -35,6 +35,7 @@ function Ticket(props) {
       e.target.innerText = 'show more...';
     }
   };
+ 
   const hide = () => {
     setClassTicket('hiddenTicket');
     props.addCount();
@@ -61,7 +62,7 @@ function Ticket(props) {
         </div>
       </div>
       <p className={contentClass}>{props.content}</p>
-      <span style={{display:props.content.length<300?"none":"inline"}} onClick={(e) => see(e)} className="see">show more...</span>
+      <span style={{display:props.content.length<280 && window.innerWidth>780?"none":"inline"}} onClick={(e) => see(e)} className="see">show more...</span>
       <div className="contact">
         <div>
           <p className="email">
