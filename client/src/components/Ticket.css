@@ -1,4 +1,5 @@
 .ticket,.hiddenTicket1{
+    max-width:768px;
     display: flex;
     text-align: left;
     border: 1px solid black;

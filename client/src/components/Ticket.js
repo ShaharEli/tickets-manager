@@ -42,8 +42,6 @@ function Ticket(props) {
       setIsFlipped(false)
     },400)}
   ,[])
-
- 
   const hide = () => { //hide function that will increase the hiddin tickets counter and do flip animation
     setClassTicket("hiddenTicket1");
     setIsFlipped(false);
