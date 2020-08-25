@@ -13,7 +13,7 @@
     box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
 .ticket:hover{
-    padding:12px
+    padding:12px;
 }
 .flip{
     display: flex;
@@ -32,10 +32,10 @@
     font-size: 16px;
     color: grey;
     overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 3; /* number of lines to show */
-   -webkit-box-orient: vertical;
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 .content2{
     font-size: 16px;
@@ -76,7 +76,7 @@
     background-color: transparent;
     outline:none;
     cursor: pointer;
-    color:red
+    color:red;
 }
 .titleAndButton{
     display: flex;
@@ -106,7 +106,7 @@ a{
 
     }
     .contact{
-        font-size:10px
+        font-size:10px;
     }
     
 }

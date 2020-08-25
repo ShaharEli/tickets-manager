@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './Ticket.css';
-import ReactCardFlip from 'react-card-flip';
+import ReactCardFlip from 'react-card-flip'; //comopnent that will flip the ticket
 
 function Ticket(props) {
-  const [isFlipped,setIsFlipped] = useState(true);
-  const [contentClass, setContentClass] = useState('content');
-  const [display, setDisplay] = useState('flex');
-  const [buttonDisplay, setButtonDisplay] = useState('none');
-  const [classTicket, setClassTicket] = useState('ticket');
+  const [isFlipped,setIsFlipped] = useState(true); //state for flipping animation
+  const [contentClass, setContentClass] = useState('content'); //state for changing the content class name
+  const [display, setDisplay] = useState('flex'); //state for hidding and displaying the ticket
+  const [buttonDisplay, setButtonDisplay] = useState('none'); //state for hidding and displaying the hide button
+  const [classTicket, setClassTicket] = useState('ticket'); //state for changing the ticket class name
   // function to add zeros to the date if needed
-  function addZero(i) {
+  function addZero(i) {  
     if (i < 10) {
       i = `0${i}`;
     }
@@ -28,7 +28,7 @@ function Ticket(props) {
     today = `${mm}/${dd}/${yyyy}`;
     return `${today}  ${h}:${m}:${s}`;
   }
-  const see = (e) => {
+  const see = (e) => { //function that will change the hide button inner text
     if (contentClass === 'content') {
       setContentClass('content2');
       e.target.innerText = 'show less';
@@ -37,36 +37,36 @@ function Ticket(props) {
       e.target.innerText = 'show more...';
     }
   };
-  useEffect(()=>{
+  useEffect(()=>{ //flip animation in the first mount
     setTimeout(()=>{
       setIsFlipped(false)
     },400)}
   ,[])
 
  
-  const hide = () => {
-    setClassTicket("hiddenTicket1")
-    setIsFlipped(false)
-    setIsFlipped(true)
+  const hide = () => { //hide function that will increase the hiddin tickets counter and do flip animation
+    setClassTicket("hiddenTicket1");
+    setIsFlipped(false);
+    setIsFlipped(true);
     props.addCount();
     setTimeout(()=>{
     setClassTicket('hiddenTicket');
     setDisplay('none');
-    },1000)
+    },1000);
   };
-  const showButton = () => {
+  const showButton = () => { 
     setButtonDisplay('block');
   };
   const hideButton = () => {
     setButtonDisplay('none');
   };
-  useEffect(() => {
-    setIsFlipped(false)
+  useEffect(() => { //function that will be called if the restore button pressed and will change the ticket to be visible and do flip animation
+    setIsFlipped(false);
     setDisplay('flex');
     setClassTicket('ticket');
   }, [props.call]);
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical"> 
     <div style={{ display }} className={classTicket} onMouseOver={showButton} onMouseOut={hideButton}>
       <div className="titleAndButton">
         <div>
@@ -91,7 +91,8 @@ function Ticket(props) {
         </div>
         <div className="labels">
           {
-                    props.labels !== null && props.labels.map((label, index) => <div className="label" key={index}>{label}</div>)
+                    props.labels !== null && props.labels.map((label, index) => 
+                    <div className="label" key={index}>{label}</div>)
                 }
         </div>
       </div>
