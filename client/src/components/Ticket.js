@@ -45,6 +45,7 @@ function Ticket(props) {
 
  
   const hide = () => {
+    setClassTicket("hiddenTicket1")
     setIsFlipped(false)
     setIsFlipped(true)
     props.addCount();
