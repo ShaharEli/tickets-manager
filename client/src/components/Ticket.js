@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Ticket.css';
+import ReactCardFlip from 'react-card-flip';
 
 function Ticket(props) {
+  const [isFlipped,setIsFlipped] = useState(false);
   const [contentClass, setContentClass] = useState('content');
   const [display, setDisplay] = useState('flex');
   const [buttonDisplay, setButtonDisplay] = useState('none');
@@ -37,9 +39,13 @@ function Ticket(props) {
   };
  
   const hide = () => {
-    setClassTicket('hiddenTicket');
+    setIsFlipped(false)
+    setIsFlipped(true)
     props.addCount();
+    setTimeout(()=>{
+    setClassTicket('hiddenTicket');
     setDisplay('none');
+    },1000)
   };
   const showButton = () => {
     setButtonDisplay('block');
@@ -48,10 +54,12 @@ function Ticket(props) {
     setButtonDisplay('none');
   };
   useEffect(() => {
+    setIsFlipped(false)
     setDisplay('flex');
     setClassTicket('ticket');
   }, [props.call]);
   return (
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
     <div style={{ display }} className={classTicket} onMouseOver={showButton} onMouseOut={hideButton}>
       <div className="titleAndButton">
         <div>
@@ -81,6 +89,9 @@ function Ticket(props) {
         </div>
       </div>
     </div>
+    <div className="flip" style={{display}}>
+    </div>
+    </ReactCardFlip>
   );
 }
 

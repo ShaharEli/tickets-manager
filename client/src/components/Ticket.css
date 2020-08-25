@@ -15,6 +15,16 @@
 .ticket:hover{
     padding:12px
 }
+.flip{
+    display: flex;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 60vw;
+    box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
 .title{
     color: #275fba;
     font-size: 20px;
