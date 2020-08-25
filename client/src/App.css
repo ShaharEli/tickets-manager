@@ -40,3 +40,18 @@
   #scrollBtn:hover {
     background-color: #555;
   }
+  
+@media screen and (max-width: 725px){
+    
+    h2{
+        font-size: 15px;
+    }
+    .counterHidden{
+        font-size: 15px;
+    }
+    #restoreHideTickets{
+        font-size: 15px;
+    }
+   
+    
+}
