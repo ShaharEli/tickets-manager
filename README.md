@@ -11,7 +11,7 @@
 # ![test-gif](./client/ui-testing-recording.gif)
 
 
-# Link to my glitch: https://glitch.com/~tickets-manager
+# Link to my glitch: https://tickets-manager.glitch.me/
 
 
 
