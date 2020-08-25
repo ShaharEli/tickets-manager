@@ -3,7 +3,7 @@ import './Ticket.css';
 import ReactCardFlip from 'react-card-flip';
 
 function Ticket(props) {
-  const [isFlipped,setIsFlipped] = useState(false);
+  const [isFlipped,setIsFlipped] = useState(true);
   const [contentClass, setContentClass] = useState('content');
   const [display, setDisplay] = useState('flex');
   const [buttonDisplay, setButtonDisplay] = useState('none');
@@ -37,6 +37,12 @@ function Ticket(props) {
       e.target.innerText = 'show more...';
     }
   };
+  useEffect(()=>{
+    setTimeout(()=>{
+      setIsFlipped(false)
+    },400)}
+  ,[])
+
  
   const hide = () => {
     setIsFlipped(false)

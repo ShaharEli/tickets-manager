@@ -44,13 +44,13 @@
 @media screen and (max-width: 725px){
     
     h2{
-        font-size: 15px;
+        font-size: 14px;
     }
     .counterHidden{
-        font-size: 15px;
+        font-size: 14px;
     }
     #restoreHideTickets{
-        font-size: 15px;
+        font-size: 14px;
     }
   
 }
