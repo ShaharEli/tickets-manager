@@ -30,10 +30,10 @@ function Ticket(props) {
   }
   const see = (e) => { //function that will change the hide button inner text
     if (contentClass === 'content') {
-      setContentClass('content2');
+      setContentClass('content2');  //this class not limited in lines
       e.target.innerText = 'show less';
     } else {
-      setContentClass('content');
+      setContentClass('content'); //this class is limited for 4 lines
       e.target.innerText = 'show more...';
     }
   };
@@ -43,7 +43,7 @@ function Ticket(props) {
     },400)}
   ,[])
   const hide = () => { //hide function that will increase the hiddin tickets counter and do flip animation
-    setClassTicket("hiddenTicket1");
+    setClassTicket("hiddenTicket1"); //class just for the animation
     setIsFlipped(false);
     setIsFlipped(true);
     props.addCount();
