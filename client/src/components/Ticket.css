@@ -23,6 +23,8 @@
     margin-bottom: 20px;
     width: 60vw;
     box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+    max-width:768px;
+
 }
 
 .title{
