@@ -99,8 +99,6 @@ const mockData=[
 describe('App Test', () => {
     test('scroll up button work', async () => {
       let browser = await puppeteer.launch({
-        headless: false,
-        slowMo:700
       });
       let page = await browser.newPage();
       await page.goto('http://localhost:3000/');
