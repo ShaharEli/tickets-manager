@@ -102,21 +102,19 @@ describe('App Test', () => {
       });
       let page = await browser.newPage();
       await page.goto('http://localhost:3000/');
-         useNock(page, ['http://localhost:3000/api']);
-      const getAllTicketsMock = await nock('http://localhost:3000/', { allowUnmocked: true })
+     useNock(page, ['http://localhost:3000/api']);
+      await nock('http://localhost:3000/', { allowUnmocked: true })
       .get('/api/tickets')
       .query(() => true)
       .reply(200, mockData);
-      await page.goto('http://localhost:3000/')
-      await page.$$('.ticket');
-     expect(getAllTicketsMock.isDone()).toBe(true)
+      await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
       await page.evaluate(() => { //scrolling down
         window.scrollBy(0, window.innerHeight*3);
       });    
-      const btn = await page.$("#scrollBtn") //check if the scroll up button became visible after scrolling down 
-      await btn.click()
-      const checker = document.body.scrollTop===0 //check if the page scrolled to the top
-      expect(checker).toBe(true)
+      const btn = await page.$("#scrollBtn"); //check if the scroll up button became visible after scrolling down 
+      await btn.click();
+      const checker = document.body.scrollTop===0; //check if the page scrolled to the top
+      expect(checker).toBe(true);
       browser.close();
     }, 76000);
   });
