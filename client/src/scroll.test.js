@@ -107,7 +107,6 @@ describe('App Test', () => {
       .get('/api/tickets')
       .query(() => true)
       .reply(200, mockData);
-      await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' })
      const elements = await page.$$('.ticket');
      expect(getAllTicketsMock.isDone()).toBe(true)
       await page.evaluate(() => { //scrolling down
