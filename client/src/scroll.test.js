@@ -102,12 +102,13 @@ describe('App Test', () => {
       });
       let page = await browser.newPage();
       await page.goto('http://localhost:3000/');
-     useNock(page, ['http://localhost:3000/api']);
+         useNock(page, ['http://localhost:3000/api']);
       const getAllTicketsMock = await nock('http://localhost:3000/', { allowUnmocked: true })
       .get('/api/tickets')
       .query(() => true)
       .reply(200, mockData);
-     const elements = await page.$$('.ticket');
+      await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' })
+      await page.$$('.ticket');
      expect(getAllTicketsMock.isDone()).toBe(true)
       await page.evaluate(() => { //scrolling down
         window.scrollBy(0, window.innerHeight*3);
