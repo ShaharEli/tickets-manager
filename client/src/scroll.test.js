@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const nock = require('nock');
 const useNock = require('nock-puppeteer');
+const { beforeAll } = require('@suvelocity/tester');
 const mockData=[
   {
       "id": "81a885d6-8f68-5bc0-bbbc-1c7b32e4b4e4",
@@ -97,11 +98,12 @@ const mockData=[
 
 
 describe('App Test', () => {
+
     test('scroll up button work', async () => {
       let browser = await puppeteer.launch({
+
       });
       let page = await browser.newPage();
-      await page.goto('http://localhost:3000/');
      useNock(page, ['http://localhost:3000/api']);
       await nock('http://localhost:3000/', { allowUnmocked: true })
       .get('/api/tickets')
