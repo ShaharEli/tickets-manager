@@ -59,7 +59,25 @@ function App() {
       </span>
     );
   };
-
+  function addZero(i) {
+    if (i < 10) {
+      i = `0${i}`;
+    }
+    return i;
+  }
+  // function to generate the current date
+  function generateTime(time) {
+    const d = time;
+    const m = addZero(d.getMinutes());
+    const h = addZero(d.getHours());
+    const s = addZero(d.getSeconds());
+    let today = d;
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = `${mm}/${dd}/${yyyy}`;
+    return `${today}  ${h}:${m}:${s}`;
+  }
   return (
     <main id="main">
       <button id="scrollBtn" onClick={scrollUp} style={{ display: scrollDisplay }}> go back up</button>
@@ -79,13 +97,10 @@ function App() {
           tickets.map((ticket) => (
             <Ticket
               addCount={addCount}
+              ticket={ticket}
               call={call}
               key={ticket.id}
-              id={ticket.id}
-              title={ticket.title}
-              content={ticket.content}
-              userEmail={ticket.userEmail}
-              creationTime={new Date(ticket.creationTime)}
+              creationTime={generateTime(new Date(ticket.creationTime))}
               labels={ticket.labels ? ticket.labels : null}
             />
           ))
