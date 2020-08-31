@@ -15,25 +15,54 @@ app.get('/api/tickets', async (req, res) => {
   }
 });
 
-app.post('/api/tickets/:ticketId/:done', async (req, res) => {
+app.post('/api/tickets/:ticketId/done', async (req, res) => {
   const tickets = await fs.readFile(path);
   let ticketsJson = JSON.parse(tickets);
-  let updated = false
-  const done = req.params.done === "done" ? true : false
+<<<<<<< HEAD
+  let updated = false;
+  const done = req.params.done === "done"
   try {
     const ticketsArray = ticketsJson.map((item) => {
       if (item.id === req.params.ticketId) {
         if (item.done !== done) {
           item.done = done;
-          updated = true
+          updated = true;
         }
+=======
+  try {
+    const ticketsArray = ticketsJson.map((item) => {
+      if (item.id === req.params.ticketId) {
+        item.done = true;
+>>>>>>> parent of 76de38f... fixed issues
       }
       return item;
     });
     ticketsJson = JSON.stringify(ticketsArray);
     await fs.writeFile(path, ticketsJson);
+<<<<<<< HEAD
     res.send({ updated });
-  } catch (e) { res.send({ updated: false }) }
+  } catch (e) { res.send({ updated: false })}
 })
+=======
+    res.send({ updated: true });
+  } catch (e) { res.send({ updated: false }); }
+});
+>>>>>>> parent of 76de38f... fixed issues
 
+app.post('/api/tickets/:ticketId/undone', async (req, res) => {
+  const tickets = await fs.readFile(path);
+  let ticketsJson = JSON.parse(tickets);
+  try {
+    const ticketsArray = ticketsJson.map((item) => {
+      if (item.id === req.params.ticketId) {
+        item.done = false;
+      }
+      return item;
+    });
+    ticketsJson = JSON.stringify(ticketsArray);
+    await fs.writeFile(path, ticketsJson);
+    res.send({ updated: true });
+  } catch (e) { res.send({ updated: true }); }
+});
 module.exports = app;
+

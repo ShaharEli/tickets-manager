@@ -8,7 +8,6 @@ import Header from './components/Header';
 function App() {
   const [counter, setCounter] = useState(0); // counter of hidden tickets
   const [tickets, setTickets] = useState([]); // list of tickets
-  const [call, setCall] = useState(0); // state that will be passed as a prop to restore tickets
   const [scrollDisplay, setScrollDisplay] = useState('none'); // state that will be used to show scroll up button
   const scrollFunction = () => { /* changing the display of the scroll up button if the
     page scrolled down */
@@ -30,18 +29,28 @@ function App() {
     };
     fetch();
   }, []);
+  const handleHide =(id)=>{
+    setTickets(prev=>{
+      const newTickets = prev.map((ticket)=>{
+        if(ticket.id ===id){
+          ticket.hidden=true
+          return ticket
+        }
+        return ticket
+      })
+      return newTickets
+    })
+    setCounter(prev=>prev+1)
+  }
   const search = async (title) => { /* search function that will be passed as a prop
      to the input field */
     const data = await axios.get(`/api/tickets?searchText=${title}`);
     setTickets(data.data);
   };
-  const addCount = () => { /* count function that will be used in the ticket componenet
-     to update the count of hidden tickets */
-    setCounter((prev) => prev + 1);
-  };
+
   const restore = async () => { // restore function to display hidden tickets
-    setCall((prev) => prev + 1);
-    setCounter(0);
+    setTickets(prev=> prev.map(ticket =>({...ticket,hidden:false})))
+    setCounter(0)
   };
   const hiddenItems = () => { /* if there is hidden tickets displayng the count of
     them and button to restore them */
@@ -59,25 +68,7 @@ function App() {
       </span>
     );
   };
-  function addZero(i) {
-    if (i < 10) {
-      i = `0${i}`;
-    }
-    return i;
-  }
-  // function to generate the current date
-  function generateTime(time) {
-    const d = time;
-    const m = addZero(d.getMinutes());
-    const h = addZero(d.getHours());
-    const s = addZero(d.getSeconds());
-    let today = d;
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-    today = `${mm}/${dd}/${yyyy}`;
-    return `${today}  ${h}:${m}:${s}`;
-  }
+
   return (
     <main id="main">
       <button id="scrollBtn" onClick={scrollUp} style={{ display: scrollDisplay }}> go back up</button>
@@ -95,12 +86,23 @@ function App() {
         </h2>
         {
           tickets.map((ticket) => (
+            ticket.hidden!==true&&
             <Ticket
-              addCount={addCount}
+<<<<<<< HEAD
               ticket={ticket}
+              key={ticket.id}
+              handleHide={handleHide}
+              creationTime={generateTime(new Date(ticket.creationTime))}
+=======
+              addCount={addCount}
               call={call}
               key={ticket.id}
-              creationTime={generateTime(new Date(ticket.creationTime))}
+              id={ticket.id}
+              title={ticket.title}
+              content={ticket.content}
+              userEmail={ticket.userEmail}
+              creationTime={new Date(ticket.creationTime)}
+>>>>>>> parent of 76de38f... fixed issues
               labels={ticket.labels ? ticket.labels : null}
             />
           ))
