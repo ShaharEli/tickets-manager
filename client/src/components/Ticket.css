@@ -1,0 +1,115 @@
+.ticket,.hiddenTicket1{
+    max-width:768px;
+    display: flex;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 7px;
+    margin-bottom: 20px;
+    width: 60vw;
+    flex-direction: column;
+    align-content: center;
+    overflow-wrap: break-word;
+    background-color: #dcf2f1;
+    box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+.ticket:hover{
+    padding:12px;
+}
+.flip{
+    display: flex;
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 60vw;
+    box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+    max-width:768px;
+
+}
+
+.title{
+    color: #275fba;
+    font-size: 20px;
+}
+.content{
+    font-size: 16px;
+    color: grey;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.content2{
+    font-size: 16px;
+    color: grey;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1000; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+.contact{
+    color: grey;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.see{
+    color:blue;
+    text-align:right;
+    margin-right:9px;
+    cursor:pointer;
+}
+.labels{
+    display: flex;
+}
+.label{
+    color: black;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border-radius: 8px;
+}
+
+.hideTicketButton{
+    border:none;
+    font-size: 16px;
+    background-color: transparent;
+    outline:none;
+    cursor: pointer;
+    color:red;
+}
+.titleAndButton{
+    display: flex;
+    align-items: center ;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+}
+
+@media screen and (max-width: 725px){
+    
+    .ticket{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .label{
+        width:20px;
+        height: 20px;
+        font-size: 3px;
+        padding:0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .contact{
+        font-size:10px;
+    }
+    
+}
