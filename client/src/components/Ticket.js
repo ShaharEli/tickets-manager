@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Ticket.css';
 import ReactCardFlip from 'react-card-flip'; // comopnent that will flip the ticket
 
-function Ticket({ticket,call,labels,creationTime,addCount}) {
+function Ticket({ticket,call,labels,creationTime,handleHide}) {
   const [isFlipped, setIsFlipped] = useState(true); // state for flipping animation
   const [contentClass, setContentClass] = useState('content'); // state for changing the content class name
   const [display, setDisplay] = useState('flex'); // state for hidding and displaying the ticket
@@ -25,29 +25,13 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
     }, 400);
   },
   []);
-  const hide = () => { /* hide function that will increase the hiddin tickets
-    counter and do flip animation */
-    setClassTicket('hiddenTicket1'); // class just for the animation
-    setIsFlipped(false);
-    setIsFlipped(true);
-    addCount();
-    setTimeout(() => {
-      setClassTicket('hiddenTicket');
-      setDisplay('none');
-    }, 1000);
-  };
   const showButton = () => {
     setButtonDisplay('block');
   };
   const hideButton = () => {
     setButtonDisplay('none');
   };
-  useEffect(() => { /* function that will be called if the restore button pressed and
-    will change the ticket to be visible and do flip animation */
-    setIsFlipped(false);
-    setDisplay('flex');
-    setClassTicket('ticket');
-  }, [call]);
+
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
       <div
@@ -61,11 +45,12 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
             <p className="title">{ticket.title}</p>
           </div>
           <div>
-            <button style={{ display: buttonDisplay }} onClick={(e) => hide(e)} className="hideTicketButton">hide</button>
+            <button style={{ display: buttonDisplay }} onClick={() => handleHide(ticket.id)} className="hideTicketButton">hide</button>
           </div>
         </div>
         <p className={contentClass}>{ticket.content}</p>
-        <span style={{ display: ticket.content.length < 380 && window.innerWidth > 780 ? 'none' : 'inline' }} onClick={(e) => changeButtonInnerText(e)} className="see">show more...</span>
+        {ticket.title === "Corvid App Developers Alpha?" && console.log(ticket.content.length+" "+window.innerWidth)}
+        <span style={{ display: ticket.content.replace(/(\r\n|\n|\r)/gm, "").length < 308 && window.innerWidth > 780 ? 'none' : 'inline' }} onClick={(e) => changeButtonInnerText(e)} className="see">show more...</span>
         <div className="contact">
           <div>
             <p className="email">
