@@ -9,7 +9,7 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
   const [buttonDisplay, setButtonDisplay] = useState('none'); // state for hidding and displaying the hide button
   const [classTicket, setClassTicket] = useState('ticket'); // state for changing the ticket class name
   // function to add zeros to the date if needed
-
+  const content =  ticket.content.replace(/(\r\n|\n|\r)/gm, "")
   const changeButtonInnerText = (e) => { // function that will change the hide button inner text
     if (contentClass === 'content') {
       setContentClass('content2'); // this class not limited in lines
@@ -64,8 +64,8 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
             <button style={{ display: buttonDisplay }} onClick={(e) => hide(e)} className="hideTicketButton">hide</button>
           </div>
         </div>
-        <p className={contentClass}>{ticket.content}</p>
-        <span style={{ display: ticket.content.length < 380 && window.innerWidth > 780 ? 'none' : 'inline' }} onClick={(e) => changeButtonInnerText(e)} className="see">show more...</span>
+        <p className={contentClass}>{content}</p>
+        <span style={{ display:content.length < 302 && window.innerWidth > 780 ? 'none' : 'inline' }} onClick={(e) => changeButtonInnerText(e)} className="see">show more...</span>
         <div className="contact">
           <div>
             <p className="email">
