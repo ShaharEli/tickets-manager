@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import './Ticket.css';
 import ReactCardFlip from 'react-card-flip'; // comopnent that will flip the ticket
 
 function Ticket({ticket,call,labels,creationTime,addCount}) {
+  const [height, setHeight] = useState(0) //height of content
+  const contentRef=useRef() //ref for the content
   const [isFlipped, setIsFlipped] = useState(true); // state for flipping animation
-  const [contentClass, setContentClass] = useState('content'); // state for changing the content class name
+  const [contentClass, setContentClass] = useState(""); // state for changing the content class name
   const [display, setDisplay] = useState('flex'); // state for hidding and displaying the ticket
   const [buttonDisplay, setButtonDisplay] = useState('none'); // state for hidding and displaying the hide button
   const [classTicket, setClassTicket] = useState('ticket'); // state for changing the ticket class name
@@ -20,6 +22,8 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
     }
   };
   useEffect(() => { // flip animation in the first mount
+    setHeight(contentRef.current.clientHeight)
+    setContentClass(contentRef.current.clientHeight>64?"content":'content2')
     setTimeout(() => {
       setIsFlipped(false);
     }, 400);
@@ -48,6 +52,8 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
     setDisplay('flex');
     setClassTicket('ticket');
   }, [call]);
+
+
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
       <div
@@ -64,8 +70,8 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
             <button style={{ display: buttonDisplay }} onClick={(e) => hide(e)} className="hideTicketButton">hide</button>
           </div>
         </div>
-        <p className={contentClass}>{content}</p>
-        <span style={{ display:content.length < 302 && window.innerWidth > 780 ? 'none' : 'inline' }} onClick={(e) => changeButtonInnerText(e)} className="see">show more...</span>
+        <p ref={contentRef} className={contentClass}>{content}</p>     
+        <span style={{ display:height<=64? 'none' :'inline' }} onClick={(e) => changeButtonInnerText(e)} className="see">show more...</span>
         <div className="contact">
           <div>
             <p className="email">
