@@ -53,14 +53,15 @@ function Ticket({ticket,call,labels,creationTime,addCount}) {
     setClassTicket('ticket');
   }, [call]);
 
-
+  console.log("render");
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+      
       <div
         style={{ display }}
         className={classTicket}
-        onMouseOver={showButton}
-        onMouseOut={hideButton}
+        onMouseEnter={showButton}
+        onMouseLeave={hideButton}
       >
         <div className="titleAndButton">
           <div>
